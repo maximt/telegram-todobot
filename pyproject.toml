@@ -3,11 +3,18 @@ name = "todo-bot"
 version = "0.1.0"
 description = ""
 authors = ["maximt <vbmaxim@gmail.com>"]
-readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
+python-telegram-bot = "^21.1.1"
+python-dotenv = "^1.0.1"
+sqlalchemy = "^2.0.29"
+psycopg2-binary = "^2.9.9"
 
+
+[tool.poetry.group.dev.dependencies]
+sqlalchemy-stubs = "^0.4"
 
 [build-system]
 requires = ["poetry-core"]
