@@ -14,6 +14,7 @@ class Task(Base):
     __tablename__ = 'todobot_tasks'
 
     id = mapped_column(Integer, primary_key=True)
+    user_id = mapped_column(Integer)
     text = mapped_column(String(2048), nullable=False)
 
     created_at: Mapped[datetime] = mapped_column(
@@ -24,7 +25,7 @@ class Task(Base):
         return f"<Task(id={self.id}: text={self.text})>"
 
     def __str__(self):
-        return f"{self.id}: {self.text}"
+        return self.text
 
 
 engine = create_engine(
