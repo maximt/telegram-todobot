@@ -1,4 +1,4 @@
-from sqlalchemy import select
+from sqlalchemy import select, delete
 
 from database import session, Task
 
@@ -29,16 +29,14 @@ def get_tasks(user_id: int) -> list[Task] | None:
         return None
 
 
-def remove_task(user_id: int, task_id: int) -> Task | None:
+def remove_task(user_id: int, task_id: int) -> bool:
     try:
-        task = session.execute(
-            select(Task).where(
+        session.execute(
+            delete(Task).where(
                 (Task.user_id == user_id) & (Task.id == task_id)
             )
-        ).first()
-        session.delete(task)
-        session.commit()
-        return task
+        )
+        return True
     except Exception as e:
         print(e)
-        return None
+        return False
