@@ -8,8 +8,8 @@ def strip_command(msg: str | None) -> str | None:
     return match.group(2) if match else None
 
 
-def find_index_in_text(msg: str | None) -> int | None:
+def find_index_in_text(msg: str | None) -> int:
     if not msg:
-        return None
+        return -1
     match = re.search(r"\#(\d+)", msg)
-    return int(match.group(1)) if match else None
+    return int(match.group(1)) if match else -1
