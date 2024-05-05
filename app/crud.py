@@ -36,6 +36,7 @@ def remove_task(user_id: int, task_id: int) -> bool:
                 (Task.user_id == user_id) & (Task.id == task_id)
             )
         )
+        session.commit()
         return True
     except Exception as e:
         print(e)
