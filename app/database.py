@@ -13,9 +13,9 @@ class Base(DeclarativeBase):
 class Task(Base):
     __tablename__ = 'todobot_tasks'
 
-    id = mapped_column(Integer, primary_key=True)
-    user_id = mapped_column(Integer)
-    text = mapped_column(String(2048), nullable=False)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    user_id: Mapped[int] = mapped_column(Integer)
+    text: Mapped[str] = mapped_column(String(2048), nullable=False)
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
